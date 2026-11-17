@@ -8,8 +8,8 @@ export default function LoveLetter() {
   return (
     <section
       id="letter"
+      className="page-section"
       style={{
-        padding: '6rem 0',
         position: 'relative',
         background: 'radial-gradient(circle at 50% 50%, rgba(21, 71, 55, 0.3) 0%, var(--bg-primary) 75%)'
       }}
@@ -123,7 +123,7 @@ export default function LoveLetter() {
                 </div>
 
                 {/* Letter Body Content */}
-                <div style={{ fontFamily: 'var(--font-serif)', fontSize: '1.25rem', lineHeight: 1.8, color: '#f5f5f7' }}>
+                <div className="letter-body" style={{ fontFamily: 'var(--font-serif)', lineHeight: 1.8, color: '#f5f5f7' }}>
                   <p style={{ fontWeight: 600, color: 'var(--gold-light)', marginBottom: '1.5rem', fontSize: '1.4rem' }}>
                     {LOVE_LETTER.salutation}
                   </p>

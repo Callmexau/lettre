@@ -30,8 +30,8 @@ export default function ReasonsGrid() {
   return (
     <section
       id="reasons"
+      className="page-section"
       style={{
-        padding: '6rem 0',
         position: 'relative',
         background: 'var(--bg-secondary)'
       }}
@@ -50,13 +50,7 @@ export default function ReasonsGrid() {
         </div>
 
         {/* 12 Reasons Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))',
-            gap: '1.75rem'
-          }}
-        >
+        <div className="reasons-grid">
           {REASONS_WHY.map((reason) => {
             const IconComponent = ICON_MAP[reason.icon] || Sparkles;
             const isFlipped = !!flippedCards[reason.id];
@@ -66,6 +60,16 @@ export default function ReasonsGrid() {
                 key={reason.id}
                 className={`flip-card ${isFlipped ? 'flipped' : ''}`}
                 onClick={() => toggleFlip(reason.id)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    toggleFlip(reason.id);
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-pressed={isFlipped}
+                aria-label={`${reason.title}, ${isFlipped ? 'masquer' : 'révéler'}`}
               >
                 <div className="flip-card-inner">
                   {/* Front Side */}

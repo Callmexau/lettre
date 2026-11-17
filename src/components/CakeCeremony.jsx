@@ -75,8 +75,8 @@ export default function CakeCeremony() {
   return (
     <section
       id="cake"
+      className="page-section"
       style={{
-        padding: '6rem 0',
         position: 'relative',
         background: 'radial-gradient(circle at 50% 50%, rgba(184, 145, 46, 0.15) 0%, var(--bg-secondary) 80%)'
       }}

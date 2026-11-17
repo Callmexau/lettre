@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Sparkles, Heart, Crown, Music } from 'lucide-react';
+import { Volume2, VolumeX, Sparkles, Crown } from 'lucide-react';
 
 export default function Navbar({ isPlaying, toggleMusic }) {
   const [scrolled, setScrolled] = useState(false);
@@ -28,13 +28,13 @@ export default function Navbar({ isPlaying, toggleMusic }) {
 
   return (
     <header
+      className="site-header"
       style={{
         position: 'fixed',
         top: 0,
         left: 0,
         right: 0,
         zIndex: 1000,
-        padding: scrolled ? '0.75rem 0' : '1.25rem 0',
         transition: 'all 0.4s ease',
         background: scrolled
           ? 'rgba(5, 22, 16, 0.85)'
@@ -43,7 +43,7 @@ export default function Navbar({ isPlaying, toggleMusic }) {
         borderBottom: scrolled ? '1px solid rgba(230, 202, 101, 0.2)' : '1px solid transparent'
       }}
     >
-      <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <div className="container navbar-inner" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         {/* Brand Logo */}
         <a
           href="#hero"
@@ -72,7 +72,7 @@ export default function Navbar({ isPlaying, toggleMusic }) {
           </div>
           <div>
             <span
-              className="font-serif text-gold-shimmer"
+              className="brand-name font-serif text-gold-shimmer"
               style={{
                 fontSize: '1.4rem',
                 fontWeight: 700,
@@ -119,9 +119,12 @@ export default function Navbar({ isPlaying, toggleMusic }) {
         </nav>
 
         {/* Action Controls & Music Toggle */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <div className="navbar-actions" style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
           <button
             onClick={toggleMusic}
+            className="music-toggle"
+            aria-label={isPlaying ? "Couper la musique d'ambiance" : "Jouer la musique d'ambiance"}
+            aria-pressed={isPlaying}
             title={isPlaying ? "Couper la musique d'ambiance" : "Jouer la musique d'ambiance"}
             style={{
               display: 'flex',
@@ -151,6 +154,9 @@ export default function Navbar({ isPlaying, toggleMusic }) {
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="mobile-menu-btn"
+            aria-label={mobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-navigation"
             style={{
               background: 'transparent',
               border: 'none',
@@ -167,7 +173,10 @@ export default function Navbar({ isPlaying, toggleMusic }) {
 
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
-        <div
+        <nav
+          id="mobile-navigation"
+          aria-label="Navigation principale"
+          className="mobile-navigation"
           style={{
             background: 'rgba(7, 19, 14, 0.96)',
             backdropFilter: 'blur(20px)',
@@ -198,7 +207,7 @@ export default function Navbar({ isPlaying, toggleMusic }) {
               {link.name}
             </a>
           ))}
-        </div>
+        </nav>
       )}
 
       {/* CSS helper for responsive desktop nav */}

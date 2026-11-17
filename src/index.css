@@ -46,6 +46,7 @@
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
+  scroll-padding-top: 5rem;
 }
 
 body {
@@ -114,13 +115,32 @@ body {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
 }
 
 @media (min-width: 768px) {
   .container {
     padding: 0 2.5rem;
   }
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+button,
+a {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.page-section {
+  padding: 4rem 0;
 }
 
 /* Glassmorphism Card Base */
@@ -294,9 +314,14 @@ body {
   cursor: pointer;
 }
 
-.flip-card:hover .flip-card-inner,
 .flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
 }
 
 .flip-card-front, .flip-card-back {
@@ -526,4 +551,319 @@ body {
 .wax-seal-btn:hover {
   transform: scale(1.1) rotate(5deg);
   box-shadow: 0 12px 35px rgba(230, 202, 101, 0.7);
+}
+
+.hero-section {
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: 7rem 0 5rem;
+}
+
+.hero-title {
+  font-size: clamp(2.35rem, 10vw, 5.25rem);
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  max-width: 22rem;
+  margin: 0 auto;
+}
+
+.countdown-box {
+  min-width: 0;
+  padding: 0.8rem 0.4rem;
+}
+
+.countdown-number {
+  font-size: 2rem;
+}
+
+.section-title {
+  font-size: clamp(1.9rem, 7vw, 3.25rem);
+  text-wrap: balance;
+}
+
+.section-subtitle {
+  padding-inline: 0.25rem;
+  font-size: 1rem;
+  text-wrap: pretty;
+}
+
+.category-filters {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  padding: 0.2rem 0.1rem 0.65rem;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.category-filters::-webkit-scrollbar {
+  display: none;
+}
+
+.category-filters button {
+  flex: 0 0 auto;
+  min-height: 44px;
+}
+
+.media-grid,
+.reasons-grid,
+.promises-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.flip-card {
+  min-height: 230px;
+}
+
+.envelope-box {
+  padding: 1.5rem 1rem;
+}
+
+.letter-body {
+  font-size: 1.1rem;
+}
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4.5rem 1rem 5rem;
+  background: rgba(4, 12, 9, 0.95);
+  backdrop-filter: blur(20px);
+}
+
+.lightbox-close,
+.lightbox-nav {
+  position: absolute;
+  z-index: 2010;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-gold);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.lightbox-close {
+  top: max(0.75rem, env(safe-area-inset-top));
+  right: max(0.75rem, env(safe-area-inset-right));
+  width: 48px;
+  height: 48px;
+  color: #ffffff;
+  background: rgba(230, 202, 101, 0.15);
+}
+
+.lightbox-nav {
+  top: 50%;
+  width: 48px;
+  height: 48px;
+  color: var(--gold-light);
+  background: rgba(15, 42, 33, 0.7);
+  transform: translateY(-50%);
+}
+
+.lightbox-prev {
+  left: 1rem;
+}
+
+.lightbox-next {
+  right: 1rem;
+}
+
+.lightbox-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: min(90vw, 1100px);
+  max-height: 85vh;
+}
+
+.lightbox-media {
+  max-width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-deep);
+}
+
+.lightbox-caption {
+  max-width: 600px;
+  margin-top: 1rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  background: rgba(15, 42, 33, 0.85);
+  text-align: center;
+  backdrop-filter: blur(12px);
+}
+
+.site-header {
+  padding: calc(0.7rem + env(safe-area-inset-top)) 0 0.7rem;
+}
+
+.brand-name {
+  font-size: 1.1rem !important;
+}
+
+.navbar-actions {
+  gap: 0.4rem !important;
+}
+
+.music-toggle {
+  width: 44px;
+  height: 44px;
+  justify-content: center;
+  padding: 0 !important;
+}
+
+.mobile-menu-btn {
+  width: 44px;
+  height: 44px;
+}
+
+.mobile-navigation {
+  max-height: calc(100dvh - 5rem);
+  overflow-y: auto;
+  padding: 0.75rem 1rem max(1rem, env(safe-area-inset-bottom)) !important;
+}
+
+.mobile-navigation a {
+  min-height: 44px;
+}
+
+@media (min-width: 480px) {
+  .countdown-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    max-width: none;
+  }
+}
+
+@media (min-width: 640px) {
+  .page-section {
+    padding: 5rem 0;
+  }
+
+  .category-filters {
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: visible;
+  }
+
+  .media-grid,
+  .reasons-grid,
+  .promises-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .hero-actions {
+    gap: 1.25rem;
+  }
+
+  .envelope-box {
+    padding: 2.5rem 1.75rem;
+  }
+}
+
+@media (min-width: 960px) {
+  .media-grid,
+  .promises-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .reasons-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .hero-section {
+    padding: 6.5rem 0 4.25rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .hero-actions > a {
+    width: 100%;
+    max-width: 22rem;
+    min-height: 48px;
+    padding: 0.8rem 1rem;
+  }
+
+  .section-badge {
+    max-width: 100%;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+
+  .lightbox-overlay {
+    padding: 4rem 0.75rem 5rem;
+  }
+
+  .lightbox-nav {
+    top: auto;
+    bottom: max(0.75rem, env(safe-area-inset-bottom));
+    transform: none;
+  }
+
+  .lightbox-prev {
+    left: calc(50% - 3.25rem);
+  }
+
+  .lightbox-next {
+    right: calc(50% - 3.25rem);
+  }
+
+  .lightbox-content {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .lightbox-media {
+    max-height: 58vh;
+  }
+
+  .lightbox-caption h3 {
+    font-size: 1.35rem !important;
+  }
+
+  .site-header .container {
+    padding-inline: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

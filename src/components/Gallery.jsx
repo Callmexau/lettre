@@ -37,8 +37,8 @@ export default function Gallery() {
   return (
     <section
       id="gallery"
+      className="page-section"
       style={{
-        padding: '6rem 0',
         position: 'relative',
         background: 'linear-gradient(to bottom, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%)'
       }}
@@ -55,16 +55,7 @@ export default function Gallery() {
           </p>
 
           {/* Category Filter Tabs */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '0.75rem',
-              flexWrap: 'wrap',
-              marginTop: '2rem'
-            }}
-          >
+          <div className="category-filters">
             {CATEGORIES.map((cat) => {
               const isActive = activeCategory === cat.id;
               return (
@@ -157,13 +148,7 @@ export default function Gallery() {
           </div>
         ) : (
           /* All other tabs: Standard Grid */
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-              gap: '1.75rem'
-            }}
-          >
+          <div className="media-grid">
             {filteredMedia.map((item, index) => {
               const isVideo = item.type === 'video';
               return (
@@ -301,37 +286,16 @@ export default function Gallery() {
         {/* Lightbox Modal */}
         {selectedMedia && (
           <div
+            className="lightbox-overlay"
             onClick={closeLightbox}
-            style={{
-              position: 'fixed',
-              inset: 0,
-              zIndex: 2000,
-              background: 'rgba(4, 12, 9, 0.95)',
-              backdropFilter: 'blur(20px)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: '2rem 1rem'
-            }}
           >
             {/* Close Button */}
             <button
               onClick={closeLightbox}
+              className="lightbox-close"
               style={{
-                position: 'absolute',
-                top: '1.5rem',
-                right: '1.5rem',
-                width: '44px',
-                height: '44px',
-                borderRadius: '50%',
-                background: 'rgba(230, 202, 101, 0.15)',
-                border: '1px solid var(--border-gold)',
-                color: '#ffffff',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                zIndex: 2010
+                width: '48px',
+                height: '48px'
               }}
             >
               <X size={24} />
@@ -340,20 +304,10 @@ export default function Gallery() {
             {/* Navigation Arrows */}
             <button
               onClick={handlePrev}
+              className="lightbox-nav lightbox-prev"
               style={{
-                position: 'absolute',
-                left: '1.5rem',
-                width: '50px',
-                height: '50px',
-                borderRadius: '50%',
-                background: 'rgba(15, 42, 33, 0.7)',
-                border: '1px solid var(--border-gold)',
-                color: 'var(--gold-light)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                zIndex: 2010
+                width: '48px',
+                height: '48px'
               }}
             >
               <ChevronLeft size={28} />
@@ -361,20 +315,10 @@ export default function Gallery() {
 
             <button
               onClick={handleNext}
+              className="lightbox-nav lightbox-next"
               style={{
-                position: 'absolute',
-                right: '1.5rem',
-                width: '50px',
-                height: '50px',
-                borderRadius: '50%',
-                background: 'rgba(15, 42, 33, 0.7)',
-                border: '1px solid var(--border-gold)',
-                color: 'var(--gold-light)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                zIndex: 2010
+                width: '48px',
+                height: '48px'
               }}
             >
               <ChevronRight size={28} />
@@ -382,57 +326,33 @@ export default function Gallery() {
 
             {/* Modal Media Box */}
             <div
+              className="lightbox-content"
               onClick={(e) => e.stopPropagation()}
-              style={{
-                maxWidth: '90vw',
-                maxHeight: '85vh',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative'
-              }}
             >
               {selectedMedia.type === 'video' ? (
                 <video
                   src={selectedMedia.src}
                   controls
                   autoPlay
+                  className="lightbox-media"
                   style={{
-                    maxWidth: '100%',
-                    maxHeight: '70vh',
-                    borderRadius: 'var(--radius-md)',
-                    boxShadow: 'var(--shadow-deep)',
-                    border: '1px solid var(--border-gold)'
+                    maxWidth: '100%'
                   }}
                 />
               ) : (
                 <img
                   src={selectedMedia.src}
                   alt={selectedMedia.title}
+                  className="lightbox-media"
                   style={{
                     maxWidth: '100%',
-                    maxHeight: '70vh',
-                    objectFit: 'contain',
-                    borderRadius: 'var(--radius-md)',
-                    boxShadow: 'var(--shadow-deep)',
-                    border: '1px solid var(--border-gold)'
                   }}
                 />
               )}
 
               {/* Caption Card */}
               <div
-                style={{
-                  marginTop: '1.25rem',
-                  textAlign: 'center',
-                  background: 'rgba(15, 42, 33, 0.85)',
-                  padding: '1rem 2rem',
-                  borderRadius: 'var(--radius-md)',
-                  border: '1px solid var(--border-gold)',
-                  backdropFilter: 'blur(12px)',
-                  maxWidth: '600px'
-                }}
+                className="lightbox-caption"
               >
                 <h3 className="font-serif text-gold-shimmer" style={{ fontSize: '1.6rem', fontWeight: 600 }}>
                   {selectedMedia.title}

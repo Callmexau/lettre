@@ -33,8 +33,8 @@ export default function DeclarationSection() {
   return (
     <section
       id="declaration"
+      className="page-section"
       style={{
-        padding: '6.5rem 0',
         position: 'relative',
         background: 'radial-gradient(circle at 50% 40%, rgba(255, 77, 109, 0.12) 0%, rgba(21, 71, 55, 0.25) 50%, var(--bg-primary) 100%)',
         overflow: 'hidden'
@@ -161,13 +161,7 @@ export default function DeclarationSection() {
             Mes Promesses Pour Toi
           </h3>
 
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: '1.5rem'
-            }}
-          >
+          <div className="promises-grid">
             {LOVE_PROMISES.map((promise) => (
               <div
                 key={promise.id}

@@ -46,14 +46,12 @@ export default function Hero({ onExploreClick }) {
   return (
     <section
       id="hero"
+      className="hero-section"
       style={{
         position: 'relative',
-        minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: '6rem',
-        paddingBottom: '4rem',
         overflow: 'hidden'
       }}
     >
@@ -124,9 +122,8 @@ export default function Hero({ onExploreClick }) {
 
         {/* Main Title */}
         <h1
-          className="font-serif text-gold-shimmer"
+          className="font-serif text-gold-shimmer hero-title"
           style={{
-            fontSize: 'clamp(2.75rem, 7vw, 5.25rem)',
             fontWeight: 700,
             lineHeight: 1.1,
             marginBottom: '1.25rem',
@@ -167,12 +164,10 @@ export default function Hero({ onExploreClick }) {
 
           {!isBirthdayToday ? (
             <div
+              className="countdown-grid"
               style={{
-                display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.75rem',
-                flexWrap: 'wrap'
+                justifyContent: 'center'
               }}
             >
               <div className="countdown-box">
@@ -215,11 +210,8 @@ export default function Hero({ onExploreClick }) {
 
         {/* Action Buttons */}
         <div
+          className="hero-actions"
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '1.25rem',
             flexWrap: 'wrap'
           }}
         >
